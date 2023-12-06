@@ -5,7 +5,7 @@ Apesar de toda tecnologia disponível nos dias de hoje, o movimento em agências
 
 Em contrapatida, enquanto isso não acontece, você foi contratado por um destes bancos para criar um sistema na linguagem C de controle de atendimento presencial de clientes.
 
-Funcionalidades do sistema:
+Funcionalidades do sistema: <br>
 - Cadastrar nome, CPF e qual setor de atendimento que deseja ser atendido
 1 - Abertura de Conta
 2 - Caixa

@@ -1,3 +1,8 @@
+/*
+Aluno: Hector Lazzari
+Curso: Engenharia de Software
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,6 +18,7 @@ typedef struct{
 
 // Cadastro do cliente
 pessoa cad_cliente(pessoa *cad, int *numAtendimento){
+    system("cls");
     printf("Opção - Solicitar Atendimento\n");
     printf("Digite seu nome: ");
     fflush(stdin);
@@ -37,6 +43,7 @@ pessoa cad_cliente(pessoa *cad, int *numAtendimento){
 
 // Listar todos os clientes registrados
 void imprimirPessoa(pessoa *atendimento, int *numAtendimento){
+    system("cls");
     int i = 0;
     for(i = 0; i < *numAtendimento; i++){
       printf("Nome: %s", atendimento[i].nome);
@@ -63,11 +70,69 @@ void imprimirPessoa(pessoa *atendimento, int *numAtendimento){
     }
 }
 
-void listarPeloTipo(pessoa *atendimento, int *numAtendimento, int tipoEscolhido){
+// Listar clientes com filtro em qual atendimento o usuário preencher.
+void listarPeloTipo(pessoa *atendimento, int *numAtendimento){
+    system("cls");
+    int op;
+    int tipo_atendimento = 0;
+    printf("Digite uma das opções de atendimento: \n");
+    printf("1 - Abertura de Conta\n");
+    printf("2 - Caixa\n");
+    printf("3 - Gerente Pessoa Física\n");
+    printf("4 - Gerente Pessoa Jurídica\n");
+    scanf("%d", &op);
+    fflush(stdin);
 
+    switch(op){
+        case 1:
+            printf("Abertura de conta\n");
+        break;
+        case 2:
+            printf("Caixa\n");
+        break;
+        case 3:
+            printf("Gerente Pessoa Física\n");
+        break;
+        case 4:
+            printf("Gerente Pessoa Jurídica\n");
+        break;
+        default:
+            printf("Escolha uma das opções...");
+    }
+
+    tipo_atendimento = op;
+
+    int i = 0;
+    for(i = 0; i < *numAtendimento; i++){
+        if (atendimento[i].setor == tipo_atendimento){
+            printf("Nome: %s", atendimento[i].nome);
+            printf("CPF: %s", atendimento[i].cpf);
+            printf("Tipo de atendimento: ");
+
+            switch(atendimento[i].setor){
+                case 1:
+                    printf("Abertura de conta\n");
+                break;
+                case 2:
+                    printf("Caixa\n");
+                break;
+                case 3:
+                    printf("Gerente Pessoa Física\n");
+                break;
+                case 4:
+                    printf("Gerente Pessoa Jurídica\n");
+                break;
+                default:
+                    printf("Escolha uma das opções...");
+            }
+            printf("=====================================================\n");
+        }
+    }
 }
 
+// Corpo principal do algoritmo, onde tem as chamadas das funções.
 int main(){
+    system("cls");
     setlocale(LC_ALL, "Portuguese");
 
     pessoa p[999];
@@ -94,6 +159,8 @@ int main(){
             
             break;
         case 3:
+
+            listarPeloTipo(p, &numAtendimento);
             break;
         case 4:
             exit(0);
